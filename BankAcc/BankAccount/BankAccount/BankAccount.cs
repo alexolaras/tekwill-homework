@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,57 +10,59 @@ namespace BankAccountProj
 {
     public class BankAccount
     {
-        private DateTime creationDate;
-        private Person person;
-        private string accountNumber;
-        private string currency;
-        private string pin;
-        private double balance;
-        public List<Transaction> transactions = new List<Transaction>();
+        public DateTime CreationDate { set; get; }
+        public Person Person { set; get; }
+        public string AccountNumber { set; get; }
+        public string Currency { get; set; }
+        public string Pin { get; set; }
+        public double Balance { get; set; }
+        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
-        public BankAccount(DateTime creationDate, Person person, string accountNumber, string currency, string pin, double balance)
+        public BankAccount(Person person, string accountNumber, string currency, string pin, double balance)
         {
-            this.creationDate = DateTime.Now;
-            this.person = new Person();
-            this.accountNumber = accountNumber;
-            this.currency = currency;
-            this.pin = pin;
-            this.balance = balance;
+            CreationDate = DateTime.Now;
+
+            Person = person;
+            AccountNumber = accountNumber;
+            Currency = currency;
+            Pin = pin;
+            Balance = balance;
         }
 
-        public double getAccountBalance()
+        public double GetAccountBalance()
         {
-            Transaction transaction = new Transaction(DateTime.UtcNow, this, "Balance check", 0);
-            transaction.addTransaction();
-            return this.balance;
+            addTransaction("Balance check", 0);
+            return Balance;
 
         }
 
-        public void deposit(double amount)
+        public void Deposit(double amount)
         {
-            Transaction transaction = new Transaction(DateTime.UtcNow, this, "Deposit", amount);
-            transaction.addTransaction();
-            this.balance += amount;
+            addTransaction("Deposit", amount);
+            Balance += amount;
         }
 
-        public void withdrawl(double amount)
+        public void Withdrawl(double amount)
         {
-            Transaction transaction = new Transaction(DateTime.UtcNow, this, "Balance withdrawl", amount);
-            transaction.addTransaction();
-            this.balance -= amount;
+            addTransaction("Balance withdrawl", amount);
+            Balance -= amount;
         }
-        public void showTransactions()
+        public void ShowTransactions()
         {
-            if (transactions != null)
-            {
-                foreach (Transaction transaction in transactions)
+
+                foreach (Transaction transaction in Transactions)
                 {
-                    Console.WriteLine(transaction.transactionTime);
-                    Console.WriteLine(transaction.transactionTitle);
-                    Console.WriteLine(transaction.amount);
+                    Console.WriteLine(transaction.TransactionTime);
+                    Console.WriteLine(transaction.TransactionTitle);
+                    Console.WriteLine(transaction.Amount);
                     Console.WriteLine();
                 }
-            }
+
+        }
+        public void addTransaction(string transactionTitle, double amount)
+        {
+            Transaction transaction = new Transaction(transactionTitle, amount);
+            this.Transactions.Add(transaction);
 
         }
 
