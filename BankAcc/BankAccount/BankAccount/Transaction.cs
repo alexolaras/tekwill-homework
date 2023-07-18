@@ -9,28 +9,22 @@ namespace BankAccountProj
 {
     public class Transaction
     {
-        public DateTime transactionTime;
-        public BankAccount account;
-        public string transactionTitle;
-        public double amount;
+        public DateTime TransactionTime { get; set; }
+        //public BankAccount Account { get; set; }
+        public string TransactionTitle { get; set; }
+        public double Amount { get; set; }
 
-        public Transaction(DateTime transactionTime, BankAccount account, string transactionTitle, double amount)
+
+        public Transaction(string transactionTitle, double amount)
         {
-            this.transactionTime = transactionTime;
-            this.account = account;
-            this.transactionTitle = transactionTitle;
-            this.amount = amount;
+            TransactionTime = DateTime.UtcNow;
+
+            //Account = account;
+            TransactionTitle = transactionTitle;
+            Amount = amount;
         }
 
-        public void addTransaction()
-        {
-            if (account.transactions != null)
-            {
-                Transaction transaction = new Transaction(DateTime.UtcNow, account, transactionTitle, amount);
-                account.transactions.Add(transaction);
-            }
 
-        }
 
 
     }
