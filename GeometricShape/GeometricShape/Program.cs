@@ -3,8 +3,8 @@ class Program
 {
     public static void Main(string[] args)
     {
-        Circle circle = new Circle(2, "Circle1");
-        Rectangle rectangle = new Rectangle("Rectangle1", 10, 7.5);
+        Circle circle = new Circle(2);
+        Rectangle rectangle = new Rectangle(10, 7.5);
 
         Console.WriteLine(circle.CalculateArea());
         Console.WriteLine(circle.CalculatePerimeter()); 

@@ -8,12 +8,11 @@ namespace GeometricShape
 {
     internal class Rectangle : Shape
     {
-        public double Length { get; set; }
-        public double Height { get; set; }
+        public double Length { get; private set; }
+        public double Height { get; private set; }
 
-        public Rectangle(string name, double length, double height) : base(name)
+        public Rectangle(double length, double height) : base(nameof(Rectangle))
         {
-            Name = name;
             Length = length;
             Height = height;
         }
@@ -25,7 +24,7 @@ namespace GeometricShape
 
         public override double CalculatePerimeter()
         {
-            return 2 * Length + 2 * Height;
+            return 2 * (Length + Height);
         }
     }
 }
