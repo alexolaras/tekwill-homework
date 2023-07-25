@@ -18,21 +18,21 @@ namespace Logger
 
         public void LogInformation(string message)
         {
-            LogMessage($"{message} info with file logger");
+            LogMessage("Log level - Information.", message);
         }
         public void LogWarning(string message)
         {
-            LogMessage($"{message} warning with file logger");
+            LogMessage("Log level - Warning.", message);
         }
         public void LogError(string message)
         {
-            LogMessage($"{message} error with file logger");
+            LogMessage("Log level - Error.", message);
         }
-        private void LogMessage(string message)
+        private void LogMessage(string logLevel, string message)
         {
             try
             {
-                string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {message}";
+                string logEntry = $"{logLevel} {DateTime.Now:yyyy-MM-dd HH:mm:ss} {message}";
 
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {

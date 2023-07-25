@@ -8,7 +8,7 @@ namespace Logger
 {
     internal class PaymentManager
     {
-        private ILogger logger;
+        private readonly ILogger logger;
         public PaymentManager(ILogger logger)
         {
             this.logger = logger;
@@ -22,8 +22,8 @@ namespace Logger
                 return;
             }
             logger.LogError($"Error when processing payment of {amount} on this card: {creditCardNumber}");
-            
         }
+
         public void RefundPayment(double amount, string transactionId)
         {
             if (transactionId != null)
@@ -33,6 +33,7 @@ namespace Logger
             }
             logger.LogError($"Error when refunding payment of {amount} with transaction id: {transactionId}");
         }
+
         public void ProcessRefund(double amount, string transactionId)
         {
             if (transactionId != "")
@@ -41,7 +42,6 @@ namespace Logger
                 return;
             }
             logger.LogError($"Error when processing payment refund of {amount} with transaction id: {transactionId}");
-
         }
     }
 }

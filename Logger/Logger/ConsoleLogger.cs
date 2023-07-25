@@ -10,15 +10,15 @@ namespace Logger
     {
         public void LogInformation(string message)
         {
-            Console.WriteLine($"{message} was saved using console logger");
+            Console.WriteLine($"Log level - Information. {message}");
         }
         public void LogWarning(string message)
         {
-            Console.WriteLine($"{message} warning with console logger");
+            Console.WriteLine($"Log level - Warninig. {message}");
         }
         public void LogError(string message)
         {
-            Console.WriteLine($"{message} error with console logger");
+            Console.WriteLine($"Log level - Error. {message}");
         }
     }
 }

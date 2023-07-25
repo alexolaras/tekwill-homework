@@ -10,7 +10,7 @@ namespace GeometricShape
     {
         public string Name { get; set; }
 
-        public Shape(string name)
+        protected Shape(string name)
         {
             Name = name;
         }
