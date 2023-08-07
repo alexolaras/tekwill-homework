@@ -6,22 +6,22 @@ class Program
     {
         Manager manager = new Manager("Andrei", new DateTime(2020, 01, 05));
 
-        List<string> limbaje = new List<string> {"C#"};
-        Programator programator = new Programator("Vasile", new DateTime(2022, 06, 22), limbaje);
+        List<string> languages = new List<string> {"C#"};
+        Programmer programmer = new Programmer("Vasile", new DateTime(2022, 06, 22), languages);
 
-        Contabil contabil = new Contabil("Valeria", new DateTime(2021, 02, 01));
+        Accountant accountant = new Accountant("Valeria", new DateTime(2021, 02, 01));
 
-        var angajati = new List<Angajat>
+        var employees = new List<Employee>
         {
-            programator, 
-            contabil, 
+            programmer, 
+            accountant, 
             manager
         };
 
-        angajati.ForEach(angajat => { Console.WriteLine(angajat.CalculeazaSalariu()); });
+        employees.ForEach(angajat => Console.WriteLine(angajat.CalculateSalary());
 
-        programator.AdaugaLimbaj("php");
+        programmer.AddLanguage("php");
 
-        angajati.ForEach(angajat => { Console.WriteLine(angajat.CalculeazaSalariu()); });
+        employees.ForEach(angajat => Console.WriteLine(angajat.CalculateSalary());
     }
 }

@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Polimorfism
 {
-    internal class Manager : Angajat
+    internal class Manager : Employee
     {
-        public Manager(string nume, DateTime dataAngajarii) : base(nume, dataAngajarii)
+        public Manager(string name, DateTime employmentDate) : base(name, employmentDate)
         {
-            
+
         }
 
-        public override double CalculeazaSalariu()
+        public override double CalculateSalary()
         {
-            var salariu = base.CalculeazaSalariu();
-            var exparienta = (int)(DateTime.Now - DataAngajarii).TotalDays/365;
+            var salary = base.CalculateSalary();
+            var exparience = (int)(DateTime.Now - EmploymentDate).TotalDays/365;
 
-            return salariu + salariu * 0.3 * exparienta;
+            return salary + salary * 0.3 * exparience;
         }
     }
 }
